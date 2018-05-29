@@ -694,7 +694,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#rdoc-conventions)]</sup>
 
 * <a name="80-character-limits"></a>
-  Limit lines to 80 characters.
+  Limit lines to ~~80~~ 100 characters.
 <sup>[[link](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
