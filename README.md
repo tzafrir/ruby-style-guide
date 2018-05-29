@@ -788,9 +788,19 @@ Translations of the guide are available in the following languages:
    ```
 
 * <a name="method-invocation-parens"></a>
-  Use parentheses around the arguments of method invocations,
-  especially if the first argument begins with an open parenthesis `(`,
-  as in `f((3 + 2) + 1)`.
+  Use parentheses around the arguments of method invocations in any case where readability is not obvious. Omit parentheses where readability is obvious. Use common sense.
+
+  ```ruby
+  # Use parentheses:
+  calculate((2 * 8) + 1)
+  calculate(a, b && c)
+  calculate(a(b), c)
+
+  # Omit:
+  calculate a, b
+  f user
+  t = Time.parse params[:since]
+  ```
 <sup>[[link](#method-invocation-parens)]</sup>
 
   ```ruby
