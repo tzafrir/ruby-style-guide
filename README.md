@@ -789,6 +789,7 @@ Translations of the guide are available in the following languages:
 
 * <a name="method-invocation-parens"></a>
   Use parentheses around the arguments of method invocations in any case where readability is not obvious. Omit parentheses where readability is obvious. Use common sense.
+<sup>[[link](#method-invocation-parens)]</sup>
 
   ```ruby
   # Use parentheses:
@@ -801,7 +802,6 @@ Translations of the guide are available in the following languages:
   f user
   t = Time.parse params[:since]
   ```
-<sup>[[link](#method-invocation-parens)]</sup>
 
   ```ruby
   # bad
