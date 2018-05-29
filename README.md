@@ -3720,12 +3720,10 @@ resource cleanup when possible.
   ```
 
 * <a name="consistent-string-literals"></a>
-  Adopt a consistent string literal quoting style. There are two popular
-  styles in the Ruby community, both of which are considered good&mdash;single
-  quotes by default (Option A) and double quotes by default (Option B).
+  Adopt a consistent string literal quoting style&mdash;single quotes by default.
 <sup>[[link](#consistent-string-literals)]</sup>
 
-  * **(Option A)** Prefer single-quoted strings when you don't need
+  * Prefer single-quoted strings when you don't need
     string interpolation or special symbols such as `\t`, `\n`, `'`,
     etc.
 
@@ -3740,23 +3738,6 @@ resource cleanup when possible.
 
     name = "De'Andre"
     ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```ruby
-    # bad
-    name = 'Bozhidar'
-
-    sarcasm = "I \"like\" it."
-
-    # good
-    name = "Bozhidar"
-
-    sarcasm = 'I "like" it.'
-    ```
-
-  The string literals in this guide are aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
