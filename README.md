@@ -123,6 +123,30 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* <a name="belive-extra-spaces-for-continuation"></a>
+  When line-wrapping, each line after the first (each continuation line) is indented at least +4 from the original line.
+  When there are multiple continuation lines, indentation may be varied beyond +4 as desired. In general, two continuation lines use the same indentation level if and only if they begin with syntactically parallel elements.
+<sup>[[link]](#belive-extra-spaces-for-continuation)</sup>
+
+  ```ruby
+  # bad
+  def method(args)
+    if args &&
+      args[0] &&
+      args.good?
+      args
+  end
+
+  # good
+  def method(args)
+    if args &&
+        args[0] &&
+        args.good?
+      args
+  end
+
+  ```
+
 * <a name="crlf"></a>
   Use Unix-style line endings. (\*BSD/Solaris/Linux/macOS users are covered by
   default, Windows users have to be extra careful.)
