@@ -3000,8 +3000,7 @@ no parameters.
 <sup>[[link](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a>
-  Indent the `public`, `protected`, and `private` methods as much as the method
-  definitions they apply to. Leave one blank line above the visibility modifier
+  Indent the protected and private methods one level further than other class code. Leave one blank line above the visibility modifier
   and one blank line below in order to emphasize that it applies to all methods
   below it.
 <sup>[[link](#indent-public-private-protected)]</sup>
@@ -3014,13 +3013,13 @@ no parameters.
 
     private
 
-    def private_method
-      # some code
-    end
+      def private_method
+        # some code
+      end
 
-    def another_private_method
-      # some code
-    end
+      def another_private_method
+        # some code
+      end
   end
   ```
 
