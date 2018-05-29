@@ -424,7 +424,6 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="two-or-more-empty-lines"></a>
-  ~~Don't use several empty lines in a row.~~
   Don't use over 2 empty lines in a row.
   Aim to use 1 line, but you can use 2 lines to indicate additional separation between paragraphs
 <sup>[[link](#two-or-more-empty-lines)]</sup>
