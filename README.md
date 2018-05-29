@@ -801,23 +801,9 @@ Translations of the guide are available in the following languages:
   calculate a, b
   f user
   t = Time.parse params[:since]
-  ```
-
-  ```ruby
-  # bad
   x = Math.sin y
-  # good
-  x = Math.sin(y)
-
-  # bad
   array.delete e
-  # good
-  array.delete(e)
-
-  # bad
   temperance = Person.new 'Temperance', 30
-  # good
-  temperance = Person.new('Temperance', 30)
   ```
 
   Always omit parentheses for
