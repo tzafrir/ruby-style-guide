@@ -429,7 +429,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="empty-lines-between-methods"></a>
-  Use empty lines between method definitions and also to break up methods
+  Use empty lines between method definitions, after `do..end` blocks, and also to break up methods
   into logical paragraphs internally.
 <sup>[[link](#empty-lines-between-methods)]</sup>
 
