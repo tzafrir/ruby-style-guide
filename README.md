@@ -123,6 +123,30 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* <a name="belive-extra-spaces-for-continuation"></a>
+  When line-wrapping, each line after the first (each continuation line) is indented at least +4 from the original line.
+  When there are multiple continuation lines, indentation may be varied beyond +4 as desired. In general, two continuation lines use the same indentation level if and only if they begin with syntactically parallel elements.
+<sup>[[link]](#belive-extra-spaces-for-continuation)</sup>
+
+  ```ruby
+  # bad
+  def method(args)
+    if args &&
+      args[0] &&
+      args.good?
+      args
+  end
+
+  # good
+  def method(args)
+    if args &&
+        args[0] &&
+        args.good?
+      args
+  end
+
+  ```
+
 * <a name="crlf"></a>
   Use Unix-style line endings. (\*BSD/Solaris/Linux/macOS users are covered by
   default, Windows users have to be extra careful.)
@@ -405,7 +429,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="empty-lines-between-methods"></a>
-  Use empty lines between method definitions and also to break up methods
+  Use empty lines between method definitions, after `do..end` blocks, and also to break up methods
   into logical paragraphs internally.
 <sup>[[link](#empty-lines-between-methods)]</sup>
 
@@ -424,15 +448,25 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="two-or-more-empty-lines"></a>
-  Don't use several empty lines in a row.
+  Don't use over 2 empty lines in a row.
+  Aim to use 1 line, but you can use 2 lines to indicate additional separation between paragraphs
 <sup>[[link](#two-or-more-empty-lines)]</sup>
 
   ```ruby
-  # bad - It has two empty lines.
+  # bad - It has three empty lines.
+  some_method
+
+
+
+  some_method
+
+
+  # good but should be rare
   some_method
 
 
   some_method
+
 
   # good
   some_method
@@ -569,7 +603,7 @@ Translations of the guide are available in the following languages:
     good&mdash;leading `.` (Option A) and trailing `.` (Option B).
 <sup>[[link](#consistent-multi-line-chains)]</sup>
 
-  * **(Option A)** When continuing a chained method invocation on
+  * When continuing a chained method invocation on
     another line keep the `.` on the second line.
 
     ```ruby
@@ -581,23 +615,6 @@ Translations of the guide are available in the following languages:
     one.two.three
       .four
     ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
-    include the `.` on the first line to indicate that the
-    expression continues.
-
-    ```ruby
-    # bad - need to read ahead to the second line to know that the chain continues
-    one.two.three
-      .four
-
-    # good - it's immediately clear that the expression continues beyond the first line
-    one.two.three.
-      four
-    ```
-
-  A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
     Align the parameters of a method call if they span more than one
@@ -701,7 +718,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#rdoc-conventions)]</sup>
 
 * <a name="80-character-limits"></a>
-  Limit lines to 80 characters.
+  Limit lines to ~~80~~ 100 characters.
 <sup>[[link](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
@@ -795,26 +812,22 @@ Translations of the guide are available in the following languages:
    ```
 
 * <a name="method-invocation-parens"></a>
-  Use parentheses around the arguments of method invocations,
-  especially if the first argument begins with an open parenthesis `(`,
-  as in `f((3 + 2) + 1)`.
+  Use parentheses around the arguments of method invocations in any case where readability is not obvious. Omit parentheses where readability is obvious. Use common sense.
 <sup>[[link](#method-invocation-parens)]</sup>
 
   ```ruby
-  # bad
+  # Use parentheses:
+  calculate((2 * 8) + 1)
+  calculate(a, b && c)
+  calculate(a(b), c)
+
+  # Omit:
+  calculate a, b
+  f user
+  t = Time.parse params[:since]
   x = Math.sin y
-  # good
-  x = Math.sin(y)
-
-  # bad
   array.delete e
-  # good
-  array.delete(e)
-
-  # bad
   temperance = Person.new 'Temperance', 30
-  # good
-  temperance = Person.new('Temperance', 30)
   ```
 
   Always omit parentheses for
@@ -3011,8 +3024,7 @@ no parameters.
 <sup>[[link](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a>
-  Indent the `public`, `protected`, and `private` methods as much as the method
-  definitions they apply to. Leave one blank line above the visibility modifier
+  Indent the protected and private methods one level further than other class code. Leave one blank line above the visibility modifier
   and one blank line below in order to emphasize that it applies to all methods
   below it.
 <sup>[[link](#indent-public-private-protected)]</sup>
@@ -3025,13 +3037,13 @@ no parameters.
 
     private
 
-    def private_method
-      # some code
-    end
+      def private_method
+        # some code
+      end
 
-    def another_private_method
-      # some code
-    end
+      def another_private_method
+        # some code
+      end
   end
   ```
 
@@ -3732,12 +3744,10 @@ resource cleanup when possible.
   ```
 
 * <a name="consistent-string-literals"></a>
-  Adopt a consistent string literal quoting style. There are two popular
-  styles in the Ruby community, both of which are considered good&mdash;single
-  quotes by default (Option A) and double quotes by default (Option B).
+  Adopt a consistent string literal quoting style&mdash;single quotes by default.
 <sup>[[link](#consistent-string-literals)]</sup>
 
-  * **(Option A)** Prefer single-quoted strings when you don't need
+  * Prefer single-quoted strings when you don't need
     string interpolation or special symbols such as `\t`, `\n`, `'`,
     etc.
 
@@ -3752,23 +3762,6 @@ resource cleanup when possible.
 
     name = "De'Andre"
     ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```ruby
-    # bad
-    name = 'Bozhidar'
-
-    sarcasm = "I \"like\" it."
-
-    # good
-    name = "Bozhidar"
-
-    sarcasm = 'I "like" it.'
-    ```
-
-  The string literals in this guide are aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
